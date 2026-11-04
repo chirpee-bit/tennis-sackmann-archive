@@ -90,6 +90,7 @@ class Settings:
     min_edge: float = field(default_factory=lambda: _env_float("TE_MIN_EDGE", 0.02))
     max_data_age_days: int = field(default_factory=lambda: _env_int("TE_MAX_DATA_AGE_DAYS", 120))
     min_sample_matches: int = field(default_factory=lambda: _env_int("TE_MIN_SAMPLE_MATCHES", 8))
+    min_market_skill: float = field(default_factory=lambda: _env_float("TE_MIN_MARKET_SKILL", 0.005))
     kelly_fraction: float = field(default_factory=lambda: _env_float("TE_KELLY_FRACTION", 0.25))
 
     # Automation

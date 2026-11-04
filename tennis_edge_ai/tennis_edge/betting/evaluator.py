@@ -191,6 +191,11 @@ class Evaluator:
                 no.append("no out-of-sample validation for this market")
             elif not metrics.get("beats_baseline_brier", False):
                 no.append("model has NOT beaten the naive baseline out-of-sample for this market")
+            elif metrics.get("model_line_brier") and metrics.get("base_line_brier"):
+                skill = 1 - metrics["model_line_brier"] / metrics["base_line_brier"]
+                if skill < self.s.min_market_skill:
+                    no.append(f"out-of-sample skill vs baseline only {skill:.2%} (< {self.s.min_market_skill:.1%} "
+                              "required) - too weak to bet")
         ece = metrics.get("model_line_ece", metrics.get("ece", 0.03)) if metrics else 0.05
 
         # ---------------- side probabilities

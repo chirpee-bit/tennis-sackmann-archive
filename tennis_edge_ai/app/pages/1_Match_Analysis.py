@@ -84,8 +84,10 @@ rows = [
     (f"{surface} record since 2015", record(a_id, surface), record(b_id, surface)),
     ("Overall record since 2015", record(a_id), record(b_id)),
     ("Form (Elo residual, decayed)", num(f["a_form"], 3), num(f["b_form"], 3)),
-    ("Serve points won (opp-adjusted)", pct(f["a_spw_adj"]), pct(f["b_spw_adj"])),
-    ("Return points won (opp-adjusted)", pct(f["a_rpw_adj"]), pct(f["b_rpw_adj"])),
+    ("Serve points won (time-decayed)", pct(f["a_spw"]), pct(f["b_spw"])),
+    ("Return points won (time-decayed)", pct(f["a_rpw"]), pct(f["b_rpw"])),
+    ("Serve pts won vs average opponent*", pct(f["a_spw_adj"]), pct(f["b_spw_adj"])),
+    ("Return pts won vs average opponent*", pct(f["a_rpw_adj"]), pct(f["b_rpw_adj"])),
     ("1st serve in", pct(f["a_first_in"]), pct(f["b_first_in"])),
     ("1st serve points won", pct(f["a_first_won"]), pct(f["b_first_won"])),
     ("2nd serve points won", pct(f["a_second_won"]), pct(f["b_second_won"])),
@@ -98,6 +100,8 @@ rows = [
     ("Matches with stats (prior 365d)", num(f["a_stat_matches_365"], 0), num(f["b_stat_matches_365"], 0)),
 ]
 st.dataframe(pd.DataFrame(rows, columns=["", a_name, b_name]), hide_index=True, width="stretch")
+st.caption("*Opponent-adjusted: performance against an average opponent of the whole database (incl. Challenger/"
+           "qualifying levels), so values for tour-level players sit above their raw rates.")
 
 c1, c2 = st.columns(2)
 with c1:

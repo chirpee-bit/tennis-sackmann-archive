@@ -1,6 +1,7 @@
 """Automated jobs. None of these place wagers or touch betting accounts."""
 from __future__ import annotations
 
+import json
 import logging
 import shutil
 from datetime import datetime
@@ -59,11 +60,15 @@ def generate_recommendations(db: Database, now: datetime | None = None, stake: f
     opps = evaluate_current(db, upcoming_only=True, now=now)
     saved, skipped = 0, 0
     for o in opps:
-        db.execute("INSERT INTO model_predictions(created_at,model_version,tour,market,player_id,opponent_id,start_time,"
-                   "line,prob_over,projection_mean,details_json,projection_key) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
-                   (utcnow_iso(), o.model_version, o.tour, o.market, o.player_id, o.opponent_id, o.start_time, o.line,
-                    o.prob_over if o.prob_over is not None else o.model_prob, o.model_mean,
-                    '{"confidence": "%s", "no_bet": %d}' % (o.confidence, len(o.no_bet_reasons)), o.projection_key))
+        seen = db.scalar("SELECT 1 FROM model_predictions WHERE projection_key=? AND IFNULL(line,-999)=IFNULL(?,-999) "
+                         "AND IFNULL(model_version,'')=IFNULL(?,'') LIMIT 1", (o.projection_key, o.line, o.model_version))
+        if not seen:
+            db.execute("INSERT INTO model_predictions(created_at,model_version,tour,market,player_id,opponent_id,start_time,"
+                       "line,prob_over,projection_mean,details_json,projection_key) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                       (utcnow_iso(), o.model_version, o.tour, o.market, o.player_id, o.opponent_id, o.start_time, o.line,
+                        o.prob_over if o.prob_over is not None else o.model_prob, o.model_mean,
+                        json.dumps({"confidence": o.confidence, "side": o.side, "no_bet_reasons": o.no_bet_reasons}),
+                        o.projection_key))
         if o.is_bet:
             try:
                 save_recommendation(db, o, stake=stake, now=now)
