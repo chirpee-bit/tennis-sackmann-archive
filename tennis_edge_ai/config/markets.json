@@ -1,0 +1,14 @@
+{
+  "_comment": "Markets the MODEL can price. 'platforms' lists where YOU have verified the market is offered. Nothing is assumed: an imported projection for a market not verified here is still priced but flagged 'market not verified for platform'. Edit via Data Management page or this file.",
+  "markets": {
+    "match_winner":      {"label": "Match Winner",        "kind": "binary", "player_level": true,  "aliases": ["match winner", "moneyline", "winner", "to win match", "h2h"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "total_games":       {"label": "Total Games (match)", "kind": "count",  "player_level": false, "aliases": ["total games", "match total games", "games total", "totals"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "player_games_won":  {"label": "Player Games Won",    "kind": "count",  "player_level": true,  "aliases": ["games won", "player games won", "player total games", "total games won"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "first_set_games":   {"label": "First Set Total Games","kind": "count", "player_level": false, "aliases": ["1st set games", "first set games", "1st set total games", "first set total games"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "total_sets":        {"label": "Total Sets",          "kind": "count",  "player_level": false, "aliases": ["total sets", "sets played", "number of sets"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "aces":              {"label": "Aces",                "kind": "count",  "player_level": true,  "aliases": ["aces", "player aces"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "double_faults":     {"label": "Double Faults",       "kind": "count",  "player_level": true,  "aliases": ["double faults", "dfs", "player double faults"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}},
+    "break_points_won":  {"label": "Break Points Won",    "kind": "count",  "player_level": true,  "aliases": ["break points won", "breaks", "break points converted", "breaks of serve"], "platforms": {"PrizePicks": false, "Tailgate": false, "Sportsbook": false}}
+  },
+  "unsupported_examples": ["fantasy score (needs platform scoring rules)", "total tiebreaks", "games handicap"]
+}

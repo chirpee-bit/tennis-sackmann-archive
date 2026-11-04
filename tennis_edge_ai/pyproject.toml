@@ -1,0 +1,17 @@
+[project]
+name = "tennis-edge-ai"
+version = "0.1.0"
+description = "Tennis statistical modelling, projection evaluation and tracking"
+requires-python = ">=3.12"
+license = {text = "Code: MIT. Bundled historical data: CC BY-NC-SA 4.0 (Jeff Sackmann)"}
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["tennis_edge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
