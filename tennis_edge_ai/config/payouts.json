@@ -1,10 +1,63 @@
 {
   "_comment": "Pick'em payout structures. These are EXAMPLE values entered by hand and are NOT verified. Payouts differ by platform, state and date and change often. Set 'verified': true ONLY after confirming the exact multipliers in your own app. Expected value is never computed from an unverified structure.",
   "structures": {
-    "PP_POWER_2": {"platform": "PrizePicks", "label": "Power 2-pick (EXAMPLE)", "legs": 2, "payouts": {"2": 3.0}, "void_rule": "drop_leg", "verified": false},
-    "PP_POWER_3": {"platform": "PrizePicks", "label": "Power 3-pick (EXAMPLE)", "legs": 3, "payouts": {"3": 5.0}, "void_rule": "drop_leg", "verified": false},
-    "PP_FLEX_3":  {"platform": "PrizePicks", "label": "Flex 3-pick (EXAMPLE)",  "legs": 3, "payouts": {"3": 2.25, "2": 1.25}, "void_rule": "drop_leg", "verified": false},
-    "PP_FLEX_5":  {"platform": "PrizePicks", "label": "Flex 5-pick (EXAMPLE)",  "legs": 5, "payouts": {"5": 10.0, "4": 2.0, "3": 0.4}, "void_rule": "drop_leg", "verified": false},
-    "TG_2":       {"platform": "Tailgate",   "label": "Tailgate 2-pick (PLACEHOLDER - fill in)", "legs": 2, "payouts": {"2": 3.0}, "void_rule": "drop_leg", "verified": false}
+    "PP_POWER_2": {
+      "platform": "PrizePicks",
+      "label": "Power 2-pick (EXAMPLE)",
+      "legs": 2,
+      "payouts": {
+        "2": 3.0
+      },
+      "void_rule": "drop_leg",
+      "verified": false,
+      "family": "PP_POWER"
+    },
+    "PP_POWER_3": {
+      "platform": "PrizePicks",
+      "label": "Power 3-pick (EXAMPLE)",
+      "legs": 3,
+      "payouts": {
+        "3": 5.0
+      },
+      "void_rule": "drop_leg",
+      "verified": false,
+      "family": "PP_POWER"
+    },
+    "PP_FLEX_3": {
+      "platform": "PrizePicks",
+      "label": "Flex 3-pick (EXAMPLE)",
+      "legs": 3,
+      "payouts": {
+        "3": 2.25,
+        "2": 1.25
+      },
+      "void_rule": "drop_leg",
+      "verified": false,
+      "family": "PP_FLEX"
+    },
+    "PP_FLEX_5": {
+      "platform": "PrizePicks",
+      "label": "Flex 5-pick (EXAMPLE)",
+      "legs": 5,
+      "payouts": {
+        "5": 10.0,
+        "4": 2.0,
+        "3": 0.4
+      },
+      "void_rule": "drop_leg",
+      "verified": false,
+      "family": "PP_FLEX"
+    },
+    "TG_2": {
+      "platform": "Tailgate",
+      "label": "Tailgate 2-pick (PLACEHOLDER - fill in)",
+      "legs": 2,
+      "payouts": {
+        "2": 3.0
+      },
+      "void_rule": "drop_leg",
+      "verified": false,
+      "family": "TG"
+    }
   }
 }
