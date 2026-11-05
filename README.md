@@ -20,6 +20,12 @@ The same archive is mirrored on the Hugging Face Hub:
 
 Each folder also keeps Jeff Sackmann's original repository README as `UPSTREAM_README.md` for provenance.
 
+## Application built on this archive
+
+`tennis_edge_ai/` contains **TENNIS EDGE AI**, a separate tennis modelling, projection-evaluation and tracking
+application that *uses* this data (it does not modify it). See [`tennis_edge_ai/README.md`](tennis_edge_ai/README.md).
+Its use of the data is subject to the same CC BY-NC-SA 4.0 licence (non-commercial).
+
 ## Original sources
 
 - Grand Slam point-by-point — https://github.com/JeffSackmann/tennis_slam_pointbypoint
